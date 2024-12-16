@@ -73,3 +73,76 @@ function krutik(){
     console.log("Inside a functionName ~ xyz:", xyz);
 
 }
+
+
+//* ======================================
+//* LET AND CONST - EcmaScript 2015
+//* =====================================
+
+//? let Keyword:  The let keyword is used to declare variables with block scope. Variables declared with let are mutable, meaning their values can be reassigned.
+
+// var Name1 = "krutik";
+// var Name1 = "ram";
+// console.log(Name);
+
+// let Name = "krutik";
+// let Name = "ram" //? cnnont re-declare 
+// console.log("before changing: ",Name);
+//  Name = "ram"
+// console.log("after changing: ", Name);
+
+//? const Keyword: The const keyword is used to declare variables with block scope, but once a value is assigned to a const variable, it cannot be reassigned. const variables are immutable.
+
+// const pi=3.142
+// const Name = "krutik";
+// Name = "ram";
+// console.log(Name);
+
+// //? 1st show what var can do
+var name = "krutik";
+
+if (true) {
+  var name = "ram";
+  console.log(name);
+}
+
+// name = "technical";
+// console.log(name);
+
+//? ex2: with the help of let keyword
+// let name = "krutik";
+
+// if (true) {
+//   name = "ram";
+//   console.log(name);
+// }
+
+// name = "technical";
+// console.log(name);
+
+//? ex2: with the help of let keyword
+// const name = "krutik";
+
+// if (true) {
+//   const name = "ram";
+//   console.log(name);
+// }
+
+// name = "technical";
+// console.log(name);
+
+// var
+// if (true) {
+//   var name = "ram";
+//   console.log(name);
+// }
+// name = "technical";
+// console.log(name);
+
+// let
+// if (true) {
+//   let name = "ram";
+//   console.log(name);
+// }
+// // name = "technical";
+// console.log(name);
