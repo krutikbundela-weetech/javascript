@@ -163,10 +163,7 @@ switch (day) {
   default:
     console.log("no condition match");
 }
-  default:
-    console.log("no condition match");
-}
-
+ 
 //?=========================
 // ? Challenge time
 //? ==========================
