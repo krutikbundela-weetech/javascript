@@ -59,6 +59,19 @@ var myAge123 = 25;
 
 //? 1. var :
 
+// !Problems
+// var a = 10
+// var a = 10
+// var ma more than one time redeclare krriii sakaai error nai aave 
+// *let ma aavseee
+// * var only know global skope and function scope 
+//so var ne agar if--else-- ma lakh su to b a global variable tarike work krseee 
+//only local scope tyaare jj lese jytaare ene function ma lakhvaa ma aave
+
+//? Hoisting: 
+// (print before declaration)
+// console.log(userName);    //output ma undefined aavse le
+// var userName = 10;
 
 
 let xyz  = 100
@@ -74,6 +87,13 @@ function krutik(){
 
 }
 
+
+//* ======================================
+//*  use strict mode
+//* =====================================
+// 'use strict'; // aa laksu pachi niche maate error aapse
+// var a = 10
+// var a = 10
 
 //* ======================================
 //* LET AND CONST - EcmaScript 2015
