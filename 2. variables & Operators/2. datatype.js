@@ -214,4 +214,104 @@ console.log(myNumber);
 //   console.log("not equal");
 // }
 
-//* ========== parseInt & parseFloat End Section ==========
+//* ========== .toString() Section ==========
+
+
+/**
+ * In JavaScript, the .toString() method is used to convert a value to its string representation. It can be used on numbers, arrays, objects, and other data types to convert them into strings.
+
+1. Using .toString() on Numbers
+The toString() method converts a number into a string.
+
+javascript
+Copy code
+const num = 42;
+const str = num.toString();
+
+console.log(str);        // "42" (string)
+console.log(typeof str); // "string"
+Optional: Number Bases
+You can specify a radix (base) for the conversion. For example:
+
+Base 2 for binary
+Base 8 for octal
+Base 16 for hexadecimal
+javascript
+Copy code
+const num = 255;
+
+console.log(num.toString(2));  // "11111111" (binary)
+console.log(num.toString(8));  // "377" (octal)
+console.log(num.toString(16)); // "ff" (hexadecimal)
+2. Using .toString() on Arrays
+The toString() method converts an array into a string by joining its elements with commas.
+
+javascript
+Copy code
+const arr = [1, 2, 3, 4];
+console.log(arr.toString()); // "1,2,3,4"
+3. Using .toString() on Objects
+The toString() method on objects does not produce a very useful result by default. It usually returns [object Object] unless the object overrides the method.
+
+Example:
+javascript
+Copy code
+const obj = { name: "Krutik", age: 25 };
+console.log(obj.toString()); // "[object Object]"
+If you want a more meaningful string representation of an object, you can:
+
+Use JSON.stringify():
+
+javascript
+Copy code
+console.log(JSON.stringify(obj)); // '{"name":"Krutik","age":25}'
+Override the toString() method manually:
+
+javascript
+Copy code
+const obj = {
+  name: "Krutik",
+  toString() {
+    return `Name: ${this.name}`;
+  },
+};
+
+console.log(obj.toString()); // "Name: Krutik"
+4. Using .toString() on Strings
+Calling .toString() on a string simply returns the string itself.
+
+javascript
+Copy code
+const str = "Hello";
+console.log(str.toString()); // "Hello"
+5. Using .toString() on Booleans
+The toString() method converts a boolean value to a string:
+
+javascript
+Copy code
+const bool = true;
+console.log(bool.toString()); // "true"
+6. Behavior of .toString() on null or undefined
+The toString() method cannot be called directly on null or undefined. Doing so will throw an error.
+
+Example:
+javascript
+Copy code
+null.toString();      // TypeError: Cannot read property 'toString' of null
+undefined.toString(); // TypeError: Cannot read property 'toString' of undefined
+To handle this safely, use the String() function:
+
+javascript
+Copy code
+console.log(String(null));      // "null"
+console.log(String(undefined)); // "undefined"
+Summary
+Type	Example	Output
+Number	(255).toString(16)	"ff" (hexadecimal)
+Array	[1,2,3].toString()	"1,2,3"
+Object	{a: 1}.toString()	"[object Object]"
+String	"hello".toString()	"hello"
+Boolean	true.toString()	"true"
+null	String(null)	"null"
+Let me know if you need further clarification! 😊
+*/
