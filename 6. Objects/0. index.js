@@ -30,6 +30,12 @@ let person = {
   },
 };
 
+// ? add property
+person.height = "160cm"
+
+//? delete
+delete person.height;
+
 //* ==============================
 //* Accessing Properties:
 //* ==============================
