@@ -13,6 +13,11 @@
 // console.log("myFavNum2:", myFavNum2);
 // console.log(myFavNum);
 
+// Number.MAX_SAFE_INTEGER  
+// Math.pow(2,53)
+// Number.MIN_SAFE_INTEGER  
+// Number.MAX_VALUE
+
 //? String: Represents a sequence of characters enclosed in single or double quotes.
 // Example:
 // var myName = 'krutik';
@@ -50,6 +55,16 @@
 // Example:
 // const bigNumber = 1234567890123456789012345678901234567890n;
 // console.log("bigNumber:", bigNumber);
+//paachad n lakhi daiyee etle BigInt thai jaai
+//decimal point nai mukii sakaai
+
+// parseInt(10n) - 4 //6n
+// 10n - BigInt(4)
+
+// 10n* 3n // 30n
+
+// 5n/2n // 2n (no decimal)
+
 
 //? Symbol: Represents a unique and immutable data type, often used to create unique identifiers.
 // Example:
