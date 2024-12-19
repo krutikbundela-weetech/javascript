@@ -19,6 +19,7 @@
 
 //? Using padStart() to pad from the beginning:
 // const companyName = "Kodyfier";
+//string ni length krtaa vadhaare aapvaa nu , to a aagad space add krri dei, ne length increse kreeee
 // const paddedName = companyName.padStart(5);
 // const paddedName = companyName.padStart(15);
 // console.log(paddedName);

@@ -39,6 +39,8 @@
 // console.log(date1);
 
 //? 4: new Date(year, month, day): Creates a Date object with the specified year, month, and day.
+
+//! january = 0, feb = 1, march = 2.....december = 11
 // const date2 = new Date(2024, 1, 19);
 // console.log(date2);
 

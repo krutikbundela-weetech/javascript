@@ -2,33 +2,46 @@
 //* Modern JavaScript - EcmaScript 2015
 //* =====================================
 
+
 //* ======================================
 //* LET AND CONST - EcmaScript 2015
 //* =====================================
 
 //? let Keyword:  The let keyword is used to declare variables with block scope. Variables declared with let are mutable, meaning their values can be reassigned.
 
-// var myFavWorldBestName = "vinod Bahadur Thapa";
-// myFavWorldBestName = "thapa technical";
-// console.log(myFavWorldBestName);
+// var Name1 = "krutik";
+// var Name1 = "ram";
+// console.log(Name);
 
-// let myFavWorldBestName = "vinod Bahadur Thapa";
-// myFavWorldBestName = "thapa technical";
-// console.log(myFavWorldBestName);
+// let Name = "krutik";
+// let Name = "ram" //? cnnont re-declare 
+// console.log("before changing: ",Name);
+//  Name = "ram"
+// console.log("after changing: ", Name);
 
 //? const Keyword: The const keyword is used to declare variables with block scope, but once a value is assigned to a const variable, it cannot be reassigned. const variables are immutable.
 
-// pi=3.142 * r * r
-
-// const myFavWorldBestName = "vinod Bahadur Thapa";
-// // myFavWorldBestName = "thapa technical";
-// console.log(myFavWorldBestName);
+// const pi=3.142
+// const Name = "krutik";
+// Name = "ram";
+// console.log(Name);
 
 // //? 1st show what var can do
-// var name = "thapa";
+var name = "krutik";
+
+if (true) {
+  var name = "ram";
+  console.log(name);
+}
+
+// name = "technical";
+// console.log(name);
+
+//? ex2: with the help of let keyword
+// let name = "krutik";
 
 // if (true) {
-//   var name = "vinod";
+//   name = "ram";
 //   console.log(name);
 // }
 
@@ -36,21 +49,10 @@
 // console.log(name);
 
 //? ex2: with the help of let keyword
-// let name = "thapa";
+// const name = "krutik";
 
 // if (true) {
-//   name = "vinod";
-//   console.log(name);
-// }
-
-// name = "technical";
-// console.log(name);
-
-//? ex2: with the help of let keyword
-// const name = "thapa";
-
-// if (true) {
-//   const name = "vinod";
+//   const name = "ram";
 //   console.log(name);
 // }
 
@@ -59,7 +61,7 @@
 
 // var
 // if (true) {
-//   var name = "vinod";
+//   var name = "ram";
 //   console.log(name);
 // }
 // name = "technical";
@@ -67,7 +69,7 @@
 
 // let
 // if (true) {
-//   let name = "vinod";
+//   let name = "ram";
 //   console.log(name);
 // }
 // // name = "technical";
@@ -79,13 +81,14 @@
 
 //? In ECMAScript 6 (ES6), template strings, also known as template literals, provide a convenient and flexible way to create strings in JavaScript. Template strings are enclosed in backticks (``) rather than single or double quotes.
 
-// let firstName = "vinod";
-// let lastName = "thapa";
+let firstName = `ram `;
+let lastName = `krutik`;
 
-// // Using template string for string interpolation
-// let fullName = firstName + lastName;
-// let fullName = `${firstName} ${lastName}`;
-// console.log(fullName);
+  // // Using template string for string interpolation
+  // let fullName1 = "Hello How are you "+ lastName +" , firstName + lastName" +firstName + lastName;
+let fullName2 = `Hello, How Are You? ${firstName} ${40+50} ${lastName}`;
+console.log(fullName2);
+// console.log("Hello How are you ,  ",firstName ,lastName);
 
 //? String Interpolation:  Template strings support string interpolation, allowing you to embed expressions directly within the string. Interpolated expressions are enclosed in ${}
 
@@ -96,20 +99,23 @@
 // console.log(message);
 
 // Multi-line Strings: Template strings make it easy to create multi-line strings without the need for concatenation or escape characters.
-// let multiLineString = `
-//   This is a multi-line
-//   string using template literals.
-//   It's much cleaner and easier to read.
-// `;
+let multiLineString = `
+  This is a multi-line
+  string using template literals.
+  unkjnkj
 
-// console.log(multiLineString);
+  hiuhuihnui
+  It's much cleaner and easier to read.
+`;
+
+console.log(multiLineString);
 
 //? Expression Evaluation: Template expressions can include any valid JavaScript expression.
 
 //! Practice Time
-// console.log("5 * " + num + " = " + 5 * num);
-// let num = 5;
-// console.log(`5 * ${num} = ${5 * num}`);
+let num = 5;
+console.log("5 * " + num + " = " + 5 * num);
+console.log(`5 * ${num} = ${5 * num}`);
 
 //? Advantages:
 //? Readability: Template strings make the code more readable, especially for complex string constructions.
@@ -130,10 +136,10 @@
 
 //! Write a function to find sum of two numbers? What if during function call user only passed one argument?
 
-// function sum(a = 20, myCurClass = 10) {
+// function krutik1(a = 20, b = 10) {
 //   return a + b;
 // }
-// console.log(sum());
+// console.log(krutik1(50));
 
 //* ==========================================
 //*  FAT ARROW FUNCTION
@@ -148,8 +154,8 @@
 
 // sum(5, 5);
 
-// const sum = (a, b) => console.log(`The sum of ${a} and ${b} is ${a + b}.`);
-// sum(5, 5);
+// const sum1 = (a, b) => console.log(`The sum of ${a} and ${b} is ${a + b}.`);
+// // sum(5, 5);
 
 //! How to convert the same in fat arrow function
 // Syntax
@@ -158,17 +164,39 @@
 //     return result; // Optional
 //   };
 
+
+//   function krutik2() {
+//       console.log("hello")
+//       return 6876
+// }
+
+
+// const krutik11 = () => {
+// console.log("hello")
+// }
+
+//   const krutik = () => {
+//       console.log("hello");
+//       return 6876
+//     }
+    
+//     console.log("1. this will run before function")
+//     var a =  krutik();
+//     console.log("a:", a);
+//     console.log("krutik ~ krutik:", krutik());
+// console.log("2. this will run after function")
+
 // todo NOTES
 
-// //?🚀 1: If the function body consists of a single expression, the braces {} and the return keyword can be omitted.
+//?🚀 1: If the function body consists of a single expression, the braces {} and the return keyword can be omitted.
 // const sum = (a, b) => `The sum of ${a} and ${b} is ${a + b}`;
 // console.log(sum(5, 5));
 
-// //? 🚀 2: If there is only one parameter, the parentheses () around the parameter list can be omitted.
+//? 🚀 2: If there is only one parameter, the parentheses () around the parameter list can be omitted.
 // const square = (a) => `The square of ${a} is  ${a * a}`;
 // console.log(square(5));
 
-// //? 🚀 3: If there are no parameters, use an empty set of parentheses ().
+//? 🚀 3: If there are no parameters, use an empty set of parentheses ().
 // const greet = () => console.log("Plz LIKE SHARE & SUBSCRIBE!");
 // greet();
 
