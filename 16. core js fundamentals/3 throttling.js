@@ -46,13 +46,12 @@ const normalFunc = () => {
 };
 
 window.addEventListener("resize", normalFunc);
-  
+
 // 🔁 Throttle vs Debounce
 // Feature	Debounce	Throttle
 // Trigger Timing	After user stops triggering for X ms	At most once every X ms
 // Use Case	Search box, input validation	Scroll, resize, dragging
 // Example Behavior	“Run after pause”	“Run at regular intervals, not more often”
-
 
 //! Debounce vs Throttling App
 

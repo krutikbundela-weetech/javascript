@@ -11,7 +11,6 @@
 // If the event is triggered again before the timer ends, the timer resets.
 // The function runs only after the timer completes without any new events.
 
-
 function debounce(fn, delay) {
   let timer;
   return function (...args) {
@@ -23,13 +22,11 @@ function debounce(fn, delay) {
 }
 
 function searchInput(e) {
-    console.log("Search query:", e.target.value);
-  }
+  console.log("Search query:", e.target.value);
+}
 
 const searchInput = document.getElementById("search");
 searchInput.addEventListener("input", debounce(searchInput, 300));
-
-
 
 // IN React js
 import { useState, useEffect } from "react";

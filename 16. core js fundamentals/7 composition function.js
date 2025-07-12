@@ -21,11 +21,13 @@ function composition(fn1, fn2) {
 }
 
 //arrow function syntax for composition
-const compositionArrow = (fn1, fn2) => (...args) => fn2(fn1(...args));
+const compositionArrow =
+  (fn1, fn2) =>
+  (...args) =>
+    fn2(fn1(...args));
 
 const composedFunction = composition(add, square);
 console.log(composedFunction(2, 3)); // Output: 25
-
 
 //now make more dynamic composition function
 function dynamicComposition(...fns) {
@@ -42,23 +44,23 @@ function addFive(x) {
   return x + 5;
 }
 function multiplyByTwo(x) {
-    return x * 2;
-    }
+  return x * 2;
+}
 function subtractThree(x) {
-    return x - 3;
+  return x - 3;
 }
 function divideByFour(x) {
-    return x / 4;
+  return x / 4;
 }
 function squareRoot(x) {
-    return Math.sqrt(x);
+  return Math.sqrt(x);
 }
 const complexComposedFunction = dynamicComposition(
-  addFive,  
-    multiplyByTwo,
-    subtractThree,
-    divideByFour,
-    squareRoot
+  addFive,
+  multiplyByTwo,
+  subtractThree,
+  divideByFour,
+  squareRoot
 );
 console.log(complexComposedFunction(10)); // Output: 2.598076211353316
 

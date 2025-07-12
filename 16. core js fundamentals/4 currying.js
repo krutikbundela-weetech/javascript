@@ -64,7 +64,6 @@ multiplyByTwo(3); // Output: 6
 multiplyByTwo(10); // Output: 20
 // multiplyByTwo(5, 3); // Output: 10 (ignores the second argument)
 
-
 function sendAutoEmail(to) {
   return function (subject) {
     return function (message) {
@@ -82,4 +81,6 @@ const sendAutoEmailArrow = (to) => (subject) => (message) => {
   console.log(`Message: ${message}`);
 };
 
-sendAutoEmail("john@example.com")("Welcome to our website")("This is a test email.");
+sendAutoEmail("john@example.com")("Welcome to our website")(
+  "This is a test email."
+);

@@ -30,7 +30,6 @@ console.log(boundFullName); // [Function: boundFullName]
 
 boundFullName(); // Akshay Kumar from New York, NY
 
-
 //! Polyfill for call, apply, and bind methods
 Function.prototype.myCall = function (context, ...args) {
   context = context || globalThis; // Use globalThis for the global object
@@ -47,19 +46,19 @@ Function.prototype.myApply = function (context, args) {
   return result; // Return the result
 };
 Function.prototype.myBind = function (context, ...args) {
-    context = context || globalThis; // Use globalThis for the global object
-    const fn = this; // Assign the function to a variable
-    return function (...bindArgs) {
-        return fn.apply(context, [...args, ...bindArgs]); // Call the function with the context and arguments
-    };
-}
+  context = context || globalThis; // Use globalThis for the global object
+  const fn = this; // Assign the function to a variable
+  return function (...bindArgs) {
+    return fn.apply(context, [...args, ...bindArgs]); // Call the function with the context and arguments
+  };
+};
 
 // Example usage of the polyfill
 const person2 = {
-    firstName: "Deepika",
-    lastName: "Kumar",
+  firstName: "Deepika",
+  lastName: "Kumar",
 };
-greet.myCall(person2, "Hi"); // Hi, Deepika 
+greet.myCall(person2, "Hi"); // Hi, Deepika
 let boundGreet = greet.myBind(person2, "Hello");
 console.log(boundGreet); // [Function: boundGreet]
 boundGreet(); // Hello, Deepika

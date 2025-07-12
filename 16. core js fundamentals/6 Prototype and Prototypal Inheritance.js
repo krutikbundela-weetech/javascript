@@ -114,12 +114,11 @@ is returned.
 
  */
 
-
 // creating prototype
 
 Object.prototype.customMethod = function () {
   console.log("This is a custom method on the Object prototype");
-}
+};
 
 const obj1 = {};
 obj1.customMethod(); // Output: This is a custom method on the Object prototype
@@ -127,7 +126,7 @@ obj1.customMethod(); // Output: This is a custom method on the Object prototype
 const str = "Hello";
 str.customMethod(); // Output: This is a custom method on the Object prototype (strings are also objects in JavaScript)
 
-// String, Number, and Boolean are all objects in JavaScript, and they inherit from their respective prototypes and also from Object prototype 
+// String, Number, and Boolean are all objects in JavaScript, and they inherit from their respective prototypes and also from Object prototype
 // because they are instances of Object constructor function.
 String.prototype.customStringMethod = function () {
   console.log(`Custom string method called on: ${this}`);
@@ -139,39 +138,37 @@ str.customStringMethod(); // Output: Custom string method called on: Hello
 
 obj1.customStringMethod(); // Output: TypeError: obj1.customStringMethod is not a function
 
-
 //Inheritance
 
 const Teacher = {
-    makeVideo:true
-}
+  makeVideo: true,
+};
 
 const TeachingSupport = {
-    isAvailable: true,
-}
+  isAvailable: true,
+};
 
 const TASupport = {
-    makeAssignment: 'JS assignments',
-    fullTime: true,
-    __proto__: TeachingSupport // Setting the prototype of TASupport to TeachingSupport
-}
+  makeAssignment: "JS assignments",
+  fullTime: true,
+  __proto__: TeachingSupport, // Setting the prototype of TASupport to TeachingSupport
+};
 
 const User = {
-    name: 'John Doe',
-    age: 30,
-    __proto__: Teacher // Setting the prototype of User to Teacher
-}
+  name: "John Doe",
+  age: 30,
+  __proto__: Teacher, // Setting the prototype of User to Teacher
+};
 
 Teacher.__proto__ = User; // Setting the prototype of Teacher to User
 
 //above is old approach, now we use Object.create() to create objects with a specific prototype
 const NewTeacher = Object.create(User); // Creating a new object with User as its prototype
-NewTeacher.name = 'Jane Smith'; // Adding a property to the new object 
+NewTeacher.name = "Jane Smith"; // Adding a property to the new object
 console.log(NewTeacher.name); // Output: Jane Smith
 console.log(NewTeacher.age); // Output: 30 (inherited from User)
 
 Object.setPrototypeOf(TASupport, TeachingSupport); // Setting the prototype of TASupport to TeachingSupport
 console.log(TASupport.isAvailable); // Output: true (inherited from TeachingSupport)
 console.log(TASupport.makeAssignment); // Output: JS assignments (inherited from TeachingSupport)
-console.log(TASupport.fullTime); // Output: true (inherited from TeachingSupport)   
-
+console.log(TASupport.fullTime); // Output: true (inherited from TeachingSupport)
