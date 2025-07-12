@@ -5,6 +5,13 @@
  */
 const add = (a, b, c) => a + b + c;
 // Currying the add function
+// function add(a) {
+//   return function (b) {
+//     return function (c) {
+//       return a + b + c;
+//     };
+//   };
+// }
 const curriedAdd = (a) => (b) => (c) => a + b + c;
 console.log(curriedAdd(1)(2)(3)); // Output: 6
 
@@ -15,8 +22,6 @@ console.log(addFive(3)); // Output: 8
 // Example of using currying for partial application with two arguments
 const addFiveAndTwo = curriedAdd(5)(2); // Partially applying the first two arguments
 console.log(addFiveAndTwo(3)); // Output: 10
-
-
 
 // let multiply = function (x,y) {
 //     console.log(x * y);
@@ -58,3 +63,23 @@ multiplyByTwo(5); // Output: 10
 multiplyByTwo(3); // Output: 6
 multiplyByTwo(10); // Output: 20
 // multiplyByTwo(5, 3); // Output: 10 (ignores the second argument)
+
+
+function sendAutoEmail(to) {
+  return function (subject) {
+    return function (message) {
+      console.log(`Sending email to: ${to}`);
+      console.log(`Subject: ${subject}`);
+      console.log(`Message: ${message}`);
+    };
+  };
+}
+
+// arrow function version
+const sendAutoEmailArrow = (to) => (subject) => (message) => {
+  console.log(`Sending email to: ${to}`);
+  console.log(`Subject: ${subject}`);
+  console.log(`Message: ${message}`);
+};
+
+sendAutoEmail("john@example.com")("Welcome to our website")("This is a test email.");
