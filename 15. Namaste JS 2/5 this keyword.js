@@ -85,3 +85,36 @@ document.querySelector("button").addEventListener("click", function () {
   console.log(this); // refers to the button element that was clicked
 });
 // In the above example, when the button is clicked, this refers to the button element that was clicked.
+
+
+
+//! In Node JS environment, the value of this in a module is not the global object. Instead, it is an empty object.
+
+console.log(this); // {} in Node.js, global object in browsers
+
+function showThisInNode() {
+  console.log(this); 
+}
+showThisInNode(); 
+
+/**
+ * output:
+ * <ref * 1> Object [global]
+ * clearImmediate: [Function: clearImmediate],
+ * clearInterval: [Function: clearInterval],
+ * clearTimeout: [Function: clearTimeout],
+ * global: [Circular *1],
+ * setImmediate: [Function: setImmediate], 
+ * setInterval: [Function: setInterval], 
+ * setTimeout: [Function: setTimeout]
+ * Buffer: [Function: Buffer],
+ * fetch: [Function: fetch],
+ * 
+ * 
+ */
+
+
+const arrowFunctionInNode = () => {
+  console.log(this); // {} in Node.js, global object in browsers
+}
+arrowFunctionInNode();

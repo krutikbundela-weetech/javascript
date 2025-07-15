@@ -9,13 +9,37 @@ const person1 = {
   firstName: "Akshay",
   lastName: "Kumar",
 };
-greet.call(person, "Hello"); // Hello, John
+greet.call(person1, "Hello"); // Hello, John
 
 let printFullName = function (homeTown, state) {
   console.log(`${this.firstName} ${this.lastName} from ${homeTown}, ${state}`);
 };
 
 printFullName.call(person1, "New York", "NY"); // Akshay Kumar from New York, NY
+
+
+//? without call method
+
+function setUsername(username) {
+  this.username = username;
+}
+
+function createUser(username,email,password) {
+  // setUsername(username);  // this refers to the global object (or undefined in strict mode), not the createUser instance
+  setUsername.call(this, username); // Fix: bind `this`
+  this.email = email;
+  this.password = password;
+}
+
+const user1 =  new createUser("john_doe", "john_doe@example.com", "password123");
+console.log(user1); 
+
+// In your createUser function, you're calling setUsername(username), but without binding this properly, so inside setUsername, this refers to the global object (or undefined in strict mode), not the createUser instance.
+
+// As a result, this.username is not set on the instance, and user1 only gets email and password properties.
+
+//so to solve this, setUsername.call(this, username); // Fix: bind `this`
+
 
 //! apply method(function borrowing with array of arguments)
 
