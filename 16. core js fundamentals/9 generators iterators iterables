@@ -1,0 +1,273 @@
+/**
+ * 
+
+🔹 1. Iterable
+An iterable is any object that implements the @@iterator method (a function under the key Symbol.iterator). That method must return an iterator.
+
+✅ Built-in iterables include:
+
+Arrays
+
+Strings
+
+Sets
+
+Maps
+
+Example: Array as Iterable
+js
+Copy
+Edit
+const arr = [10, 20, 30];
+
+const iterator = arr[Symbol.iterator](); // Get the iterator
+
+console.log(iterator.next()); // { value: 10, done: false }
+console.log(iterator.next()); // { value: 20, done: false }
+console.log(iterator.next()); // { value: 30, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+🔹 2. Iterator
+An iterator is any object that has a .next() method which returns { value, done }.
+
+Manual Custom Iterator
+js
+Copy
+Edit
+const myIterator = {
+  data: [1, 2, 3],
+  index: 0,
+  next() {
+    if (this.index < this.data.length) {
+      return { value: this.data[this.index++], done: false };
+    }
+    return { value: undefined, done: true };
+  }
+};
+
+console.log(myIterator.next()); // { value: 1, done: false }
+🔹 3. Generator (Generator Function)
+A generator function automatically creates both an iterator and an iterable in one go!
+
+js
+Copy
+Edit
+function* myGenerator() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = myGenerator();
+
+console.log(typeof gen[Symbol.iterator]); // "function"
+console.log(gen === gen[Symbol.iterator]()); // true (it's its own iterable)
+🧠 Summary of Relationships
+Concept	Has Symbol.iterator?	Has .next()?	Returns values lazily?
+Iterable	✅ Yes	❌ No	Depends (e.g. arrays = eager)
+Iterator	❌ No	✅ Yes	✅ Yes
+Generator	✅ Yes	✅ Yes	✅ Yes
+
+✅ Generators are both iterable and iterators.
+
+🔁 Looping Over Iterables
+js
+Copy
+Edit
+for (const val of "abc") {
+  console.log(val); // 'a', 'b', 'c'
+}
+Custom iterable example:
+
+js
+Copy
+Edit
+const iterableObject = {
+  data: [100, 200, 300],
+  [Symbol.iterator]() {
+    let index = 0;
+    return {
+      next: () => {
+        if (index < this.data.length) {
+          return { value: this.data[index++], done: false };
+        }
+        return { value: undefined, done: true };
+      }
+    };
+  }
+};
+
+for (const num of iterableObject) {
+  console.log(num); // 100, 200, 300
+}
+💡 Real-Life Use Case Combining All Three
+Infinite Range Generator (Lazy Evaluation)
+js
+Copy
+Edit
+function* infiniteRange(start = 0) {
+  let i = start;
+  while (true) {
+    yield i++;
+  }
+}
+
+const numbers = infiniteRange();
+console.log(numbers.next().value); // 0
+console.log(numbers.next().value); // 1
+Used in:
+
+Paginating APIs
+
+Lazy UI loading (like infinite scroll)
+
+Redux-saga
+
+✅ Quick Recap:
+Term	You define it with...	You use it with...
+Iterable	Symbol.iterator	for...of, spread (...)
+Iterator	.next()	.next() manually
+Generator	function* + yield	for...of, .next(), spread
+
+ */
+
+
+/**
+ * 
+ * 🔹 1. What Are Generators?
+Generators are special functions in JavaScript that can pause and resume their execution. They're defined using the function* syntax and use the yield keyword to pause.
+
+Example: Basic Generator
+js
+Copy
+Edit
+function* simpleGenerator() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = simpleGenerator();
+
+console.log(gen.next()); // { value: 1, done: false }
+console.log(gen.next()); // { value: 2, done: false }
+console.log(gen.next()); // { value: 3, done: false }
+console.log(gen.next()); // { value: undefined, done: true }
+🔹 2. How Generators Work
+Key Concepts:
+function* defines a generator.
+
+yield pauses the function and returns a value.
+
+next() resumes from the last yield.
+
+🔹 3. Iterating with Generators
+Generators are iterable, which means you can use them in loops:
+
+js
+Copy
+Edit
+function* countTo(n) {
+  for (let i = 1; i <= n; i++) {
+    yield i;
+  }
+}
+
+for (const num of countTo(5)) {
+  console.log(num); // Logs 1 through 5
+}
+🔹 4. Passing Values Back In
+You can send values into a generator via next(value).
+
+js
+Copy
+Edit
+function* greeter() {
+  const name = yield "What is your name?";
+  yield `Hello, ${name}!`;
+}
+
+const greet = greeter();
+console.log(greet.next().value);        // "What is your name?"
+console.log(greet.next("Krutik").value); // "Hello, Krutik!"
+🔹 5. Use Cases in Real Life
+✅ Lazy Evaluation (e.g., large data)
+js
+Copy
+Edit
+function* infiniteNumbers() {
+  let i = 1;
+  while (true) {
+    yield i++;
+  }
+}
+
+const numbers = infiniteNumbers();
+console.log(numbers.next().value); // 1
+console.log(numbers.next().value); // 2
+// Keeps going...
+✅ Generating IDs
+js
+Copy
+Edit
+function* idGenerator() {
+  let id = 0;
+  while (true) {
+    yield ++id;
+  }
+}
+
+const genId = idGenerator();
+console.log(genId.next().value); // 1
+console.log(genId.next().value); // 2
+✅ Replacing Async/State Machines
+js
+Copy
+Edit
+function* fetchSequence() {
+  const user = yield fetch("/user").then(res => res.json());
+  const posts = yield fetch(`/posts?userId=${user.id}`).then(res => res.json());
+  return posts;
+}
+
+const it = fetchSequence();
+it.next().value.then(user => {
+  it.next(user).value.then(posts => {
+    console.log(posts);
+  });
+});
+🔹 6. Advanced Tip: Delegating to Other Generators
+js
+Copy
+Edit
+function* subGen() {
+  yield 'a';
+  yield 'b';
+}
+
+function* mainGen() {
+  yield* subGen();
+  yield 'c';
+}
+
+for (let val of mainGen()) {
+  console.log(val); // a b c
+}
+🔹 7. When to Use Generators
+Infinite data streams
+
+Custom iterators
+
+Pause-resume logic
+
+Implementing coroutines (like async without async/await)
+
+Complex iteration (e.g., tree traversal)
+
+If you’d like, I can guide you through interactive coding exercises or build a real project using generators, like:
+
+A paginated data fetcher
+
+A generator-based Redux Saga-like flow
+
+Lazy list rendering in React
+ */
